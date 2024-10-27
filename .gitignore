@@ -2,3 +2,4 @@ mysql_data/
 app/
 app-production/node_modules/
 app-production/dist/
+antd-demo/node_modules/
