@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import { getActivitiesById } from '../repositories/activitiesRepository';
+import { getActivitiesByIdRepository } from '../repositories/activitiesRepository';
 import { deleteActivitiesRepository } from '../repositories/activitiesRepository';
 
-export const deleteActivitiesController = async (req: Request, res: Response) => {
+export const deleteActivitiesController = async (req: Request,) => {
     const { id } = req.params;
     try {
-        const existActivity = await getActivitiesById(Number(id));
+        const existActivity = await getActivitiesByIdRepository(Number(id));
         if(!existActivity){
             throw {status: 404, message: "Activity not found"};
         }

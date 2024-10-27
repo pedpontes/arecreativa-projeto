@@ -4,7 +4,7 @@ import { createActivitiesRepository } from "../repositories/activitiesRepository
 
 const prisma = new PrismaClient();
 
-export const createActivitiesController = async (req: Request, res: Response) => {
+export const createActivitiesController = async (req: Request) => {
     try {
         const {title, resum, objective, BNCC, time_total, necessary_resources, guide} = req.body;
         if (!title || !objective || !BNCC || !time_total || !necessary_resources || !guide) {
