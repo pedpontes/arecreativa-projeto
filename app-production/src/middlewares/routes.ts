@@ -7,7 +7,7 @@ const routes = Router();
 
 
 
-routes.use("/api/activities", handleActivitiesRoutes);
+routes.use("/activities", handleActivitiesRoutes);
 
 
 
