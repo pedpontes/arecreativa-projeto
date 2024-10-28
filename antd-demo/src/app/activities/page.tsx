@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 import { IActivitiesData } from "../lib/IActivitiesData";
 import CreateActivityModal from "./components/ModalCreateActivityComponent";
-import EditActivityModal from "./components/ModalEditActivityComponent";
+import CardActivityComponent from "./components/CardActivityComponent";
 
 
-export default function Activities() {
+export default function ActivitiesPage() {
     const [activities, setActivities] = useState<IActivitiesData[]>([]);
     
     useEffect(() => {
@@ -22,15 +22,8 @@ export default function Activities() {
     return (
         <>
             <CreateActivityModal/>
-            <h1>Activities</h1>
-            <ul>
-                {activities.map((activity, index) => (
-                    <li key={index}>
-                        {activity.title}
-                        <EditActivityModal activity={activity}/>
-                    </li>
-                ))}
-            </ul>
+            <h1>Atividades</h1>
+            <CardActivityComponent Activities={activities}/>                    
         </>
     );
 }

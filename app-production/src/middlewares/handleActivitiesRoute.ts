@@ -63,4 +63,10 @@ route.patch("/:id/changestatus",async (req: Request, res: Response) => {
         }
     });
 
+    //TODO: get activity by id
+
+route.get("/:id",async (req: Request, res: Response) => {
+
+});
+
 export default route;
