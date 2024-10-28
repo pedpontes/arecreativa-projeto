@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { getActivitiesByIdRepository } from '../repositories/activitiesRepository';
 import { deleteActivitiesRepository } from '../repositories/activitiesRepository';
 
-export const deleteActivitiesController = async (req: Request,) => {
+export const deleteActivitiesController = async (req: Request) => {
     const { id } = req.params;
     try {
         const existActivity = await getActivitiesByIdRepository(Number(id));

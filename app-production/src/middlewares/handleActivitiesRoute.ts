@@ -4,6 +4,7 @@ import {Router, Request, Response} from "express";
 import {deleteActivitiesController} from "../controllers/deleteActivitiesController";
 import { changeStatusActivitiesController } from "../controllers/changeStatusActivitiesController";
 import { editActivitiesController } from "../controllers/editActivitiesController";
+import { getActivityByIdController } from "../controllers/getActivityByIdController";
 const route = Router();
 
 
@@ -63,10 +64,14 @@ route.patch("/:id/changestatus",async (req: Request, res: Response) => {
         }
     });
 
-    //TODO: get activity by id
-
 route.get("/:id",async (req: Request, res: Response) => {
-
-});
+    try {
+        const activity = await getActivityByIdController(req);
+        res.status(200).json(activity);
+    }
+    catch (error: any){
+        res.status(error.status ?? 500).send(error.message);
+    }
+    });
 
 export default route;

@@ -19,7 +19,7 @@ const ActivityModal: React.FC<EditActivityModalProps> = ({ activity }: EditActiv
 
     return (
         <>
-            <Button type="link" onClick={() => setIsModalOpen(true)}>
+            <Button type="primary" color='default' onClick={() => setIsModalOpen(true)}>
                 Editar
             </Button>
             <Modal title={"Editar atividade #" + activity.id} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>

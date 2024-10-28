@@ -25,8 +25,8 @@ const ActivityModal: React.FC = ( ) => {
 
     return (
         <>
-            <Button type="primary" onClick={() => setIsModalOpen(true)}>
-                Create Activity
+            <Button size='large' type="primary" onClick={() => setIsModalOpen(true)}>
+                Criar atividade
             </Button>
             <Modal title="Criar atividade" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <Form

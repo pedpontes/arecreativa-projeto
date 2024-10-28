@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, List } from 'antd';
-import EditActivityModal from '@/app/activities/components/ModalEditActivityComponent';
+import EditActivityModal from '@/app/activities/[id]/components/ModalEditActivityComponent';
 import { IActivitiesData } from '@/app/lib/IActivitiesData';
 
 const CardActivityComponent: React.FC<{ Activities: IActivitiesData[] }> = ({ Activities }) => {
@@ -16,7 +16,6 @@ const CardActivityComponent: React.FC<{ Activities: IActivitiesData[] }> = ({ Ac
         dataSource={Activities}
         renderItem={(item) => (
         <List.Item>
-            <EditActivityModal activity={item}/>
             <Card onClick={() => handleRedirectActivity(item)} title={item.title}>{item.resum || "Nenhum resumo."}</Card>
         </List.Item>
         )}

@@ -1,26 +1,35 @@
+"use client"
+
 import { IActivitiesData } from "@/app/lib/IActivitiesData";
 import { useEffect, useState } from "react";
+import ContentActivityComponent from "./components/ContentActivityComponent";
+import ModalEditActivityComponent from "./components/ModalEditActivityComponent";
 
 
-export default function ActivityById({ id }: { id: number }) {
+export default function ActivityById({ params }: { params : { id : number }}) {
     const [activity, setActivity] = useState<IActivitiesData | null>(null);
 
     useEffect(() => {
         async function fetchActivity() {
-            const response = await fetch(`http://localhost:3000/api/activities/${id}`);
+            console.log(params.id);
+            const response = await fetch(`http://localhost:3000/api/activities/${params.id}`);
             const activityData = await response.json();
-
+            
+            console.log(activityData);
             setActivity(activityData);
         }
         
         fetchActivity();
-    })
+    }, []);
 
-
-    //TODO: get activity by id component
     return (
-        <div>
-            <h1>Activity {activity?.id}</h1>
-        </div>
+        <>
+            { activity && (
+                <>
+                    <ModalEditActivityComponent activity={activity}/>
+                    <ContentActivityComponent {...activity} />
+                </>
+            )}
+        </>
     );
 };
