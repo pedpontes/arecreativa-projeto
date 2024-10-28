@@ -4,10 +4,11 @@ const app = express();
 const PORT = 3000;
 import routes from './middlewares/routes';
 import next from "next"
+import path from 'path';
 
 //FIXME: Erro ao encontrar o arquivo build .next, verifique o caminho correto: 
 
-const server = next({dev: false, conf: {distDir: "../../antd-demo/.next"}});
+const server = next({dev: false, conf: {distDir: path.join(__dirname, '../.next')}});
 const handle = server.getRequestHandler();
 
 server.prepare().then(() => {
@@ -16,10 +17,15 @@ server.prepare().then(() => {
     app.all("*", (req, res) => {
         return handle(req, res);
     });
+
+    app.listen(PORT, () => {
+        console.log(`> Server is running at http://localhost:${PORT}`);
+    });
+    
+}).catch((err) => {
+    console.error(err.stack);
+    process.exit(1);
 });
 
-app.listen(PORT, () => {
-    console.log(`> Server is running at http://localhost:${PORT}`);
-});
 
 
