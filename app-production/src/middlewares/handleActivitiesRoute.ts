@@ -22,6 +22,7 @@ route.get("/",async (req: Request, res: Response) => {
 //create an activity
 
 route.post("/",async (req: Request, res: Response) => {
+        console.log(req.body);
         try {
             const newActivity = await createActivitiesController(req);
             

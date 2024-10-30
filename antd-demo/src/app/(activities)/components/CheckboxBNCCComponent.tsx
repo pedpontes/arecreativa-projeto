@@ -1,8 +1,8 @@
 import { BNCC } from "@/app/lib/IActivitiesData";
 import { Checkbox } from "antd";
-import { useState, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 
-export const CheckboxBNCCComponent: React.FC = () => {
+const CheckboxBNCCComponent: React.FC<{value?: string[], onChange?: (value: string[]) => void}> = ({value = [], onChange}) => {
     const [bncc, setBncc] = useState<BNCC[]>([]);
     useEffect(() => {
         async function fetchBNCC() {
@@ -19,9 +19,15 @@ export const CheckboxBNCCComponent: React.FC = () => {
 
     return (
         <>
-            {bncc.map((bncc_option) => {
-                return <Checkbox key={bncc_option.BNCC_id} value={bncc_option.BNCC_id}>{bncc_option.title}</Checkbox>
-            })}
+            <Checkbox.Group value={value} onChange={onChange}>
+                {bncc.map((bncc_option) => (
+                    <Checkbox key={bncc_option.id} value={bncc_option.id}>
+                        {bncc_option.title}
+                    </Checkbox>
+                ))}
+            </Checkbox.Group>
         </>
         )
 };
+
+export default CheckboxBNCCComponent;

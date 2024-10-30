@@ -23,6 +23,6 @@ export interface IActivitiesFormSubmit {
 }
 
 export interface BNCC {
-    BNCC_id: number;
+    id: number;
     title: string;
 }
