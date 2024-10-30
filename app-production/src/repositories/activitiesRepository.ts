@@ -20,7 +20,17 @@ export async function createActivitiesRepository(data: IActivitiesData): Promise
                 title,
                 resum,
                 objective,
-                BNCC,
+                Activities_BNCC: {
+                    create: BNCC.map((bncc) => {
+                        return {
+                            BNCC: {
+                                connect: {
+                                    id: bncc.BNCC_id
+                                }
+                            }
+                        }
+                    })
+                },
                 time_total,
                 necessary_resources,
                 guide
@@ -79,7 +89,13 @@ export async function editActivitiesRepository(id: number, data: IActivitiesData
             where: {
                 id
             },
-            data
+            data: {
+                ...data, 
+        
+                Activities_BNCC: {
+                  set: data.BNCC.map((bncc) => ({ id: bncc.BNCC_id })),
+                },
+              },
         });
 
         return newActivity;
@@ -87,3 +103,17 @@ export async function editActivitiesRepository(id: number, data: IActivitiesData
         throw {status: 500, message: error};
     }
 };
+
+export async function getBNCCOptionsRepository(): Promise<any> {
+    try {
+        const bNCCOptions = await prisma.bNCC_options.findMany({
+            select: {
+                id: true,
+                title: true
+            }
+        });
+        return bNCCOptions;
+    } catch (error: any) {
+        throw {status: 500, message: error};
+    }
+}

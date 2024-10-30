@@ -1,5 +1,5 @@
 export interface IActivitiesData {
-    BNCC: string;
+    BNCC: BNCC[];
     title: string;
     id: number;
     guide: string;
@@ -10,4 +10,19 @@ export interface IActivitiesData {
     updatetAt: string;
     createdAt: string;
     actived: boolean;
+}
+
+export interface IActivitiesFormSubmit {
+    title: string;
+    resum?: string;
+    objective: string;
+    BNCC: BNCC[];
+    time_total: number;
+    necessary_resources: string;
+    guide: string;
+}
+
+export interface BNCC {
+    BNCC_id: number;
+    title: string;
 }

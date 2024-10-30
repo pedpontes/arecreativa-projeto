@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
-import { IActivitiesData } from '@/app/lib/IActivitiesData';
+import { ActivityContext } from '../page';
 
-const ContentActivityComponent: React.FC<IActivitiesData> = (Activity) => {
+const ContentActivityComponent: React.FC = () => {
     const [activityItemsContent, setActivityItemsContent] = useState<DescriptionsProps["items"]>([])
-
+    const activity = useContext(ActivityContext);
 
     useEffect(() => {
         let activityItemsMap: DescriptionsProps["items"] = []
 
-        Object.keys(Activity).map((key, index) => {
+        Object.keys(activity).map((key, index) => {
             activityItemsMap.push(
                 {
                     key: index.toString(),

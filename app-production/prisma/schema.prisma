@@ -21,9 +21,27 @@ model Activities {
   title String @db.VarChar(255)
   resum String? @db.Text
   objective String @db.VarChar(255)
-  BNCC String @db.Text
   time_total Int
   necessary_resources String @db.Text
   guide String @db.Text
   actived Boolean @default(true)
+
+  Activities_BNCC Activities_BNCC[]
 }
+
+model BNCC_options {
+  id  Int  @id @default(autoincrement())
+  title String @db.VarChar(255)
+
+  Activities_BNCC Activities_BNCC[]
+}
+
+model Activities_BNCC {
+  id  Int  @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Activities Activities @relation(fields: [Activities_id], references: [id])
+  Activities_id Int
+  BNCC BNCC_options @relation(fields: [BNCC_id], references: [id])
+  BNCC_id Int
+} 

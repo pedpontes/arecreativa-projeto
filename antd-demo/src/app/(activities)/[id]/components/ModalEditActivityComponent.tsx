@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Modal, Button } from 'antd';
-import { IActivitiesData } from '@/app/lib/IActivitiesData';
+import { ActivityContext } from '../page';
 
-interface EditActivityModalProps {
-    activity: IActivitiesData;
-}
-
-const ActivityModal: React.FC<EditActivityModalProps> = ({ activity }: EditActivityModalProps) => {
+const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const activity = useContext(ActivityContext);
 
     const handleOk = () => {
         setIsModalOpen(false);

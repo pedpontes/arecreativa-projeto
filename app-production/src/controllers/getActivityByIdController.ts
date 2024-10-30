@@ -4,7 +4,6 @@ import { Request } from "express";
 
 export const getActivityByIdController = async (req: Request) => {
     const { id } = req.params;
-    console.log(id);
     try {
         const activity = await getActivitiesByIdRepository(Number(id));
         if(!activity) {

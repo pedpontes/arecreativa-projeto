@@ -9,7 +9,7 @@ import { Flex } from "antd";
 import { Input } from "antd";
 
 
-export default function ActivitiesPage() {
+export default function Page() {
     const [activities, setActivities] = useState<IActivitiesData[]>([]);
     const [searchInput, setSearchInput] = useState<string>('');
     const [filteredActivities, setFilteredActivities] = useState<IActivitiesData[]>([]);
