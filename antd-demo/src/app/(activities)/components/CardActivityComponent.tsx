@@ -1,39 +1,37 @@
 "use client"
 
 import React from 'react';
-import { Card, List } from 'antd';
-import { IActivitiesData } from '@/app/lib/IActivitiesData';
+import { Card } from 'antd';
+import { IActivitiesData } from '@/app/lib/IActivities';
 import Link from 'next/link';
 
 const CardActivityComponent: React.FC<{ Activities: IActivitiesData[] }> = ({ Activities }) => {
 
-    return(
-    <List
-        grid={{ gutter: 16, column: 4 }}
-        dataSource={Activities}
-        renderItem={(item) => (
-            <Link href={`/${item.id}`}>
-                <List.Item>
-                    <Card 
-                        title={item.title} 
-                        hoverable 
-                        style={{ transition: 'transform 0.2s, box-shadow 0.2s' }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-5px)';
-                            e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = 'none';
-                        }}
-                    >
-                        {item.resum || "Nenhum resumo."}
-                    </Card>
-                </List.Item>
-            </Link>
-        )}
-    />
-)
-};
-
+    return(      
+    <>  
+        <Card
+            title="Atividades"
+            >
+                {Activities.map((item) =>
+                    <Link href={`/${item.id}`}>
+                            <Card 
+                                extra={<span>{item.actived ? "ATIVADO" : "DESATIVADO"}</span>}
+                                title={item.title} 
+                                type='inner'
+                                hoverable={true}
+                                style={{
+                                    wordWrap: "break-word", 
+                                    overflowWrap: "break-word", 
+                                    whiteSpace: "normal",
+                                    marginBottom: "10px"
+                                }}
+                            >
+                                {item.resum || "Nenhum resumo."}
+                            </Card>
+                    </Link>
+                )}
+        </Card>
+    
+    </>
+)};
 export default CardActivityComponent;

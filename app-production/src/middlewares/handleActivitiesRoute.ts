@@ -5,6 +5,7 @@ import {deleteActivitiesController} from "../controllers/deleteActivitiesControl
 import { changeStatusActivitiesController } from "../controllers/changeStatusActivitiesController";
 import { editActivitiesController } from "../controllers/editActivitiesController";
 import { getActivityByIdController } from "../controllers/getActivityByIdController";
+import { getPdfController } from "../controllers/getPdfController";
 const route = Router();
 
 
@@ -21,8 +22,7 @@ route.get("/",async (req: Request, res: Response) => {
 
 //create an activity
 
-route.post("/",async (req: Request, res: Response) => {
-        console.log(req.body);
+route.post("/:id",async (req: Request, res: Response) => {
         try {
             const newActivity = await createActivitiesController(req);
             
@@ -74,5 +74,15 @@ route.get("/:id",async (req: Request, res: Response) => {
         res.status(error.status ?? 500).send(error.message);
     }
     });
+
+route.get("/pdf/:id",async (req: Request, res: Response) => {
+    try {
+        await getPdfController(req);
+        res.status(200).download(`./pdfs/activity-${req.params.id}/activity.pdf`);
+    }
+    catch (error: any){
+        res.status(error.status ?? 500).send(error.message);
+    }
+});
 
 export default route;

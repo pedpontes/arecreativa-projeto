@@ -1,32 +1,28 @@
-import React, { useContext, useEffect, useState } from 'react';
+"use client"
+
+import React, { useContext } from 'react';
 import { Descriptions } from 'antd';
-import type { DescriptionsProps } from 'antd';
-import { ActivityContext } from '../page';
+import { ActivityContext } from '../components/ActivityContext';
 
 const ContentActivityComponent: React.FC = () => {
-    const [activityItemsContent, setActivityItemsContent] = useState<DescriptionsProps["items"]>([])
     const activity = useContext(ActivityContext);
-
-    useEffect(() => {
-        let activityItemsMap: DescriptionsProps["items"] = []
-
-        Object.keys(activity).map((key, index) => {
-            activityItemsMap.push(
-                {
-                    key: index.toString(),
-                    label: key,
-                    children: <p></p>
-                }
-            )
-        })
-
-        setActivityItemsContent(activityItemsMap);
-    }, [])
-
-
+    
+    console.log(activity);
+    
     return (
         <>
-            <Descriptions size='default' column={1} title="Informações da atividade" items={activityItemsContent} />
+            <Descriptions bordered layout='vertical' size='default' column={1} title="Informações da atividade">
+                <Descriptions.Item label="Status">{activity.actived ? "ATIVA" : "DESATIVADA"}</Descriptions.Item>
+                <Descriptions.Item label="Título">{activity.title}</Descriptions.Item>
+                <Descriptions.Item label="Resumo">{activity.resum}</Descriptions.Item>
+                <Descriptions.Item label="Objetivo">{activity.objective}</Descriptions.Item>
+                <Descriptions.Item label="Recursos necessários">{activity.necessary_resources}</Descriptions.Item>
+                <Descriptions.Item label="Guia">{activity.guide}</Descriptions.Item>
+                <Descriptions.Item label="Competências BNCC">
+                    {activity.Activities_BNCC.map((item) => item.BNCC.title).join(', ')}
+                </Descriptions.Item>
+                <Descriptions.Item label="Tempo de duração">{activity.time_total} Horas</Descriptions.Item>
+            </Descriptions>
         </>
     );
 }

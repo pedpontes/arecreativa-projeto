@@ -1,6 +1,6 @@
-import { BNCC } from "@/app/lib/IActivitiesData";
+import { BNCC } from "@/app/lib/IActivities";
 import { Checkbox } from "antd";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const CheckboxBNCCComponent: React.FC<{value?: string[], onChange?: (value: string[]) => void}> = ({value = [], onChange}) => {
     const [bncc, setBncc] = useState<BNCC[]>([]);

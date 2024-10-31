@@ -1,8 +1,9 @@
+"use client"
+
 import React from 'react';
 import { Modal, Button } from 'antd';
 import { useRouter } from 'next/navigation';
-import { ActivityContext } from '../page';
-import { revalidatePath } from 'next/cache';
+import { ActivityContext } from '../components/ActivityContext';
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -14,16 +15,14 @@ const ActivityModal: React.FC = () => {
             const response = await fetch(`http://localhost:3000/api/activities/${activity.id}`, {
                 method: 'DELETE',
             });
-            setIsModalOpen(false);
 
             if(response.ok) {
-                revalidatePath("/");
-                return router.push('/')
+                setIsModalOpen(false);
+                router.push('/');
             }
             return;
         } catch (error) {
-            console.error(error);
-            setIsModalOpen(false);  
+            console.error(error);  
         }
     };
 
@@ -33,7 +32,12 @@ const ActivityModal: React.FC = () => {
 
     return (
         <>
-            <Button type="primary" color='danger' onClick={() => setIsModalOpen(true)}>
+            <Button 
+            type="primary" 
+            onClick={() => setIsModalOpen(true)}
+            style={{
+                backgroundColor: "red",
+            }}>
                 Excluir
             </Button>
             <Modal 

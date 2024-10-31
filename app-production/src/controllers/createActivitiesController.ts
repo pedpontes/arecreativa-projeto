@@ -1,8 +1,6 @@
-import { Request, Response } from "express";
-import { PrismaClient } from "@prisma/client";
+import { Request } from "express";
 import { createActivitiesRepository } from "../repositories/activitiesRepository";
-
-const prisma = new PrismaClient();
+import { IActivitiesData } from "../lib/IActivitiesData";
 
 export const createActivitiesController = async (req: Request) => {
     try {
@@ -10,6 +8,11 @@ export const createActivitiesController = async (req: Request) => {
         if (!title || !objective || !BNCC || !time_total || !necessary_resources || !guide) {
             throw {status: 400, message: "Missing required fields"};
         }
+        const dataJson: IActivitiesData = req.body;
+        
+        console.log(dataJson);
+        
+        
         const newActivity = await createActivitiesRepository(req.body);
 
         return newActivity;

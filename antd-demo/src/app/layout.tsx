@@ -1,17 +1,11 @@
 "use client"
 
+import "./global.css";
 import React from 'react';
-import "./globals.css";
-import type { MenuProps } from 'antd';
 import { Layout, Menu, theme } from 'antd';
+import Link from 'next/link';
 
 const { Header, Content } = Layout;
-
-const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
-
 
 export default function RootLayout ({
     children
@@ -28,27 +22,29 @@ export default function RootLayout ({
                 <Header style={{ display: 'flex', alignItems: 'center' }}>
                     <div className="demo-logo" />
                     <Menu
+                    items={[{
+                        key: '1',
+                        label: <Link href={"/"}>Inicio</Link>
+                    }]}
                     theme="dark"
                     mode="horizontal"
-                    defaultSelectedKeys={['2']}
-                    items={items1}
                     style={{ flex: 1, minWidth: 0 }}
                     />
                 </Header>
-                <Layout>
-                    <Layout style={{ padding: '0 24px 24px' }}>
-                        <Content
-                            style={{
+                <Layout style={{ padding: '0 24px 24px' }}>
+                    <Content
+                        style={{
                             padding: 24,
                             margin: 0,
-                            minHeight: 280,
+                            minHeight: "100vh",
+                            maxHeight: "max-content",
+                            width: "100%",
                             background: colorBgContainer,
                             borderRadius: borderRadiusLG,
-                            }}
-                        >
-                            {children}
-                        </Content>
-                    </Layout>
+                        }}
+                    >
+                        {children}
+                    </Content>
                 </Layout>
             </Layout>
         </body>

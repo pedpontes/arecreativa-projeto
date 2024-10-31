@@ -1,11 +1,12 @@
 import React from 'react';
 import { Modal, Button, Input, Tag } from 'antd';
 import { Form } from 'antd';
-import { IActivitiesFormSubmit } from '@/app/lib/IActivitiesData';
+import { IActivitiesFormSubmit } from '@/app/lib/IActivities';
 import CheckboxBNCCComponent from './CheckboxBNCCComponent';
+import { useRouter } from 'next/navigation';
 
 
-const customizeRequiredMark = (label: React.ReactNode, { required }: { required: boolean }) => (
+export const customizeRequiredMark = (label: React.ReactNode, { required }: { required: boolean }) => (
     <>
       {required ? <Tag color="error">Obrigatório</Tag> : <Tag color="warning">Opcional</Tag>}
       {label}
@@ -15,22 +16,28 @@ const customizeRequiredMark = (label: React.ReactNode, { required }: { required:
 const ActivityModal: React.FC = ( ) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const [form] = Form.useForm();
+    const router = useRouter();
 
     const handleOk = () => {
         form.submit();
     };
 
-    const onFinish = async (values: IActivitiesFormSubmit) => {
-        form.resetFields();
+    const onFinish = async (valuesForm: IActivitiesFormSubmit) => {
+        const valuesSubmit: any = {
+            ...valuesForm,
+            time_total: Number(valuesForm.time_total),
+        }
         try{
             const response = await fetch('http://localhost:3000/api/activities', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(values),
+                body: JSON.stringify(valuesSubmit),
             });
             if(response.ok){
+                router.refresh();
+                form.resetFields();
                 setIsModalOpen(false);
             }
         }
