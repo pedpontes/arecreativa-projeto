@@ -19,7 +19,7 @@ services:
     image: node:latest
     container_name: node_container
     working_dir: /usr/src/app
-    command: npm start
+    commands: npm install && npm start
     volumes:
       - ./app-production:/usr/src/app
     ports:
