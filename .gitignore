@@ -3,5 +3,5 @@ app-production/.next/
 app-production/node_modules/
 app-production/dist/
 antd-demo/node_modules/
-init.bat
-script.txt
+antd-demo/.next/
+
