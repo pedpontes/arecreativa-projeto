@@ -22,7 +22,7 @@ route.get("/",async (req: Request, res: Response) => {
 
 //create an activity
 
-route.post("/:id",async (req: Request, res: Response) => {
+route.post("/",async (req: Request, res: Response) => {
         try {
             const newActivity = await createActivitiesController(req);
             

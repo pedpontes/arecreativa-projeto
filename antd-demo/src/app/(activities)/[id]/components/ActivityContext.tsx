@@ -1,5 +1,6 @@
 "use client"
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 import { IActivityBNCCData } from "@/app/lib/IActivities";
 import { createContext, useEffect, useState } from "react";
 
@@ -13,7 +14,7 @@ const ActivityContextProvider: React.FC<{ children: React.ReactNode, params: { i
 
     useEffect(() => {
         async function fetchActivity() {
-            const response = await fetch(`http://localhost:3000/api/activities/${params.id}`, {
+            const response = await fetch(`${baseUrl}/api/activities/${params.id}`, {
                 cache: 'no-store',
             });
             const activityData = await response.json();

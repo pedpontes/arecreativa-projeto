@@ -1,9 +1,10 @@
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 import React from 'react';
 import { Modal, Button, Input, Tag } from 'antd';
 import { Form } from 'antd';
 import { IActivitiesFormSubmit } from '@/app/lib/IActivities';
 import CheckboxBNCCComponent from './CheckboxBNCCComponent';
-import { useRouter } from 'next/navigation';
+import { useModalAction } from "@/app/components/ModalActionComponent"
 
 
 export const customizeRequiredMark = (label: React.ReactNode, { required }: { required: boolean }) => (
@@ -16,7 +17,7 @@ export const customizeRequiredMark = (label: React.ReactNode, { required }: { re
 const ActivityModal: React.FC = ( ) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const [form] = Form.useForm();
-    const router = useRouter();
+    const { setModalAction } = useModalAction();
 
     const handleOk = () => {
         form.submit();
@@ -28,7 +29,7 @@ const ActivityModal: React.FC = ( ) => {
             time_total: Number(valuesForm.time_total),
         }
         try{
-            const response = await fetch('http://localhost:3000/api/activities', {
+            const response = await fetch(`${baseUrl}/api/activities`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,13 +37,16 @@ const ActivityModal: React.FC = ( ) => {
                 body: JSON.stringify(valuesSubmit),
             });
             if(response.ok){
-                router.refresh();
                 form.resetFields();
                 setIsModalOpen(false);
+                window.location.reload();
+                return setModalAction({isopen: true, message: "Atividade criada com sucesso!", success: true});
             }
+            return setModalAction({isopen: true, message: "Erro ao criar atividade!", success: false});
         }
         catch(e){
             console.error(e);
+            return setModalAction({isopen: true, message: "Erro ao criar atividade!", success: false});
         }
     };
 

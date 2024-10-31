@@ -1,27 +1,32 @@
 "use client"
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 import React from 'react';
 import { Modal, Button } from 'antd';
 import { useRouter } from 'next/navigation';
 import { ActivityContext } from '../components/ActivityContext';
+import { useModalAction } from "@/app/components/ModalActionComponent";
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const activity = React.useContext(ActivityContext);
     const router = useRouter();
+    const { setModalAction } = useModalAction();
 
     const handleOk = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/activities/${activity.id}`, {
+            const response = await fetch(`${baseUrl}/api/activities/${activity.id}`, {
                 method: 'DELETE',
             });
 
             if(response.ok) {
                 setIsModalOpen(false);
-                router.push('/');
+                setModalAction({isopen: true, message: "Atividade exluida com sucesso!", success: true});
+                return router.push('/');
             }
-            return;
+            return setModalAction({isopen: true, message: "Erro ao exluir atividade!", success: false});
         } catch (error) {
+            setModalAction({isopen: true, message: "Erro ao exluir atividade!", success: false});
             console.error(error);  
         }
     };

@@ -1,5 +1,6 @@
 "use client"
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 import { BNCC, IActivityBNCCData } from "@/app/lib/IActivities";
 import { Checkbox } from "antd";
 import { useState, useEffect } from "react";
@@ -9,12 +10,14 @@ import { ActivityContext } from '../components/ActivityContext';
 import { customizeRequiredMark } from '../../components/ModalCreateActivityComponent';
 import { IActivitiesFormSubmit } from '@/app/lib/IActivities';
 import { useRouter } from "next/navigation";
+import { useModalAction } from "@/app/components/ModalActionComponent";
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const activity = useContext(ActivityContext);
     const [form] = Form.useForm();
     const router = useRouter();
+    const { setModalAction } = useModalAction();
 
     useEffect(() => {
         if (isModalOpen) {
@@ -38,7 +41,7 @@ const ActivityModal: React.FC = () => {
 
         console.log(valuesForm);
         try{
-            const response = await fetch(`http://localhost:3000/api/activities/${activity.id}`, {
+            const response = await fetch(`${baseUrl}/api/activities/${activity.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -46,12 +49,15 @@ const ActivityModal: React.FC = () => {
                 body: JSON.stringify(valuesForm),
             });
             if(response.ok){
-                form.resetFields();
                 setIsModalOpen(false);
-                router.push("/");
+                form.resetFields();
+                setModalAction({isopen: true, message: "Atividade editada com sucesso!", success: true});
+                return router.push("/");
             }
+            return setModalAction({isopen: true, message: "Erro ao editar atividade!", success: false});
         }
         catch(e){
+            setModalAction({isopen: true, message: "Erro ao editar atividade!", success: false});
             console.error(e);
         };
     }
@@ -145,4 +151,5 @@ const CheckboxBNCCEditComponent: React.FC<{ activity: IActivityBNCCData, form: a
         </Checkbox.Group>
     );
 };
+
 

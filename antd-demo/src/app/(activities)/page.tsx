@@ -1,5 +1,6 @@
 "use client"
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 import { useState, useEffect } from "react";
 import { IActivitiesData } from "../lib/IActivities";
 import CreateActivityModalComponent from "./components/ModalCreateActivityComponent";
@@ -16,7 +17,7 @@ export default function Page() {
     
     useEffect(() => {
         async function fetchActivities () {
-            const response = await fetch('http://localhost:3000/api/activities',{
+            const response = await fetch(`${baseUrl}/api/activities`,{
                 cache: 'no-store',
             });
             const activitiesData = await response.json();

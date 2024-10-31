@@ -11,10 +11,12 @@ const CardActivityComponent: React.FC<{ Activities: IActivitiesData[] }> = ({ Ac
     <>  
         <Card
             title="Atividades"
+            key={1}
             >
                 {Activities.map((item) =>
                     <Link href={`/${item.id}`}>
                             <Card 
+                                key={item.id}
                                 extra={<span>{item.actived ? "ATIVADO" : "DESATIVADO"}</span>}
                                 title={item.title} 
                                 type='inner'
