@@ -1,4 +1,0 @@
-echo docker-compose run &&
-echo cd app-production && echo npm start &&
-echo cd ../antd-demo && echo npm run dev
-PAUSE
