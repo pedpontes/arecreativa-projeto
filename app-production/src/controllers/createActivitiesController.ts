@@ -8,10 +8,6 @@ export const createActivitiesController = async (req: Request) => {
     if (!title || !objective || !BNCC || !time_total || !necessary_resources || !guide) {
         throw {status: 400, message: "Missing required fields"};
     }
-    const dataJson: IActivitiesData = req.body;
-    
-    console.log(dataJson);
-    
     
     const newActivity = await createActivitiesRepository(req.body);
 

@@ -3,6 +3,7 @@ version: '3.8'
 services:
   mysql:
     image: mysql:latest
+    restart: always
     container_name: mysql_container
     environment:
       MYSQL_ROOT_PASSWORD: 123456
@@ -17,9 +18,10 @@ services:
   node:
     image: node:latest
     container_name: node_container
-    working_dir: /app
+    working_dir: /usr/src/app
+    command: npm start
     volumes:
-      - ./app:/app
+      - ./app-production:/usr/src/app
     ports:
       - "3000:3000"
     depends_on:
