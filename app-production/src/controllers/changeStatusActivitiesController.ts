@@ -5,14 +5,10 @@ import { changeStatusActivitiesRepository } from "../repositories/activitiesRepo
 
 export const changeStatusActivitiesController = async (req: Request) => {
     const { id } = req.params;
-    try {
-        const activity = await getActivitiesByIdRepository(Number(id));
-        if(!activity){
-            throw {status: 404, message: "Activity not found"};
-        }
-        await changeStatusActivitiesRepository(activity);
+
+    const activity = await getActivitiesByIdRepository(Number(id));
+    if(!activity){
+        throw {status: 404, message: "Activity not found"};
     }
-    catch(error: any){
-        throw {status: error.status, message: error.message};
-    }
+    await changeStatusActivitiesRepository(activity);
 };

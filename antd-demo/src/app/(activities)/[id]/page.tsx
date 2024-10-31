@@ -10,9 +10,8 @@ import ToggleActiveButtonComponent from "./components/ToggleActiveButtonComponen
 import DownloadButtonComponent from "./components/DownloadButtonComponent";
 
 
-export default async function Page({ params }: { params : { id : number }}) {
-    const { id } = await params;
-
+export default async function Page({ params }: { params : Promise<{ id: number }> }) {
+    const { id } = (await params);
     return (
         <>
             <ActivityContextProvider params={{ id: id }}>

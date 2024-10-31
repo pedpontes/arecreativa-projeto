@@ -1,6 +1,7 @@
-import puppeteer, { Puppeteer } from 'puppeteer';
+import puppeteer from 'puppeteer';
 import fs from 'fs';
 import { Request } from 'express';
+import BASE_URL from "../config"
 
 export const getPdfController = async (req: Request) => {
   
@@ -15,7 +16,7 @@ export const getPdfController = async (req: Request) => {
   });
   const page = await browser.newPage();
 
-  await page.goto(`http://localhost:3001/${req.params.id}`, { waitUntil: 'networkidle2' });
+  await page.goto(`${BASE_URL}/${req.params.id}`, { waitUntil: 'networkidle2' });
 
   await page.pdf({
     path: `./pdfs/activity-${req.params.id}/activity.pdf`,                   

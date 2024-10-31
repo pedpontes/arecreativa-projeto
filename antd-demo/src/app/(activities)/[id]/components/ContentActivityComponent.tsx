@@ -7,8 +7,6 @@ import { ActivityContext } from '../components/ActivityContext';
 const ContentActivityComponent: React.FC = () => {
     const activity = useContext(ActivityContext);
     
-    console.log(activity);
-    
     return (
         <>
             <Descriptions bordered layout='vertical' size='default' column={1} title="Informações da atividade">

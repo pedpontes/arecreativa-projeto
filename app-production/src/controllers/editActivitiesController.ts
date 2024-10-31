@@ -4,31 +4,24 @@ import { editActivitiesRepository, getActivitiesByIdRepository } from '../reposi
 
 export const editActivitiesController = async (req: Request) => {
     const {id} = req.params;
-    try{
-        if(req.body == null){
-            throw {status: 400, message: "Bad request"};
-        }
-        
-        //validate if the camps are empty
-        Object.keys(req.body).forEach((key) => {
-            if(key !== "resum"){
-                if(req.body[key] === "" || req.body[key] === null || key == "id" || key == "actived"){
-                    throw {status: 400, message: "Bad request"};
-                } 
-            }
-        });
-
-        const existActivity = await getActivitiesByIdRepository(Number(id));
-        if(!existActivity){
-            throw {status: 404, message: "Activity not found"};
-        }
-
-        const newActivity = await editActivitiesRepository(Number(id), req.body);
-        return newActivity;
+    if(req.body == null){
+        throw {status: 400, message: "Bad request"};
     }
-    catch(error: any){
-        throw {status: error.status, message: error.message};
+    
+    //validate if the camps are empty
+    Object.keys(req.body).forEach((key) => {
+        if(key !== "resum"){
+            if(req.body[key] === "" || req.body[key] === null || key == "id" || key == "actived"){
+                throw {status: 400, message: "Bad request"};
+            } 
+        }
+    });
+
+    const existActivity = await getActivitiesByIdRepository(Number(id));
+    if(!existActivity){
+        throw {status: 404, message: "Activity not found"};
     }
 
-
+    await editActivitiesRepository(Number(id), req.body);
+    return;
 };

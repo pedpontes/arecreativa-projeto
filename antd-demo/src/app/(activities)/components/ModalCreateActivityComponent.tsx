@@ -24,7 +24,7 @@ const ActivityModal: React.FC = ( ) => {
     };
 
     const onFinish = async (valuesForm: IActivitiesFormSubmit) => {
-        const valuesSubmit: any = {
+        valuesForm = {
             ...valuesForm,
             time_total: Number(valuesForm.time_total),
         }
@@ -34,7 +34,7 @@ const ActivityModal: React.FC = ( ) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(valuesSubmit),
+                body: JSON.stringify(valuesForm),
             });
             if(response.ok){
                 form.resetFields();

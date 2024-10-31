@@ -23,8 +23,7 @@ const ActivityContextProvider: React.FC<{ children: React.ReactNode, params: { i
         }
         
         fetchActivity();
-
-    }, []);
+    },[params.id]);
 
     useEffect(() => {
         if(activity.id) {

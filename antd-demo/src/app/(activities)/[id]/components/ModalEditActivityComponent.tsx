@@ -2,7 +2,7 @@
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 import { BNCC, IActivityBNCCData } from "@/app/lib/IActivities";
-import { Checkbox } from "antd";
+import { Checkbox, FormInstance } from "antd";
 import { useState, useEffect } from "react";
 import { useContext } from 'react';
 import { Modal, Button, Form, Input } from 'antd';
@@ -39,7 +39,6 @@ const ActivityModal: React.FC = () => {
             time_total: Number(valuesForm.time_total),
         }
 
-        console.log(valuesForm);
         try{
             const response = await fetch(`${baseUrl}/api/activities/${activity.id}`, {
                 method: 'PUT',
@@ -118,7 +117,7 @@ const ActivityModal: React.FC = () => {
 
 export default ActivityModal;
 
-const CheckboxBNCCEditComponent: React.FC<{ activity: IActivityBNCCData, form: any}> = ({activity, form}) => {
+const CheckboxBNCCEditComponent: React.FC<{ activity: IActivityBNCCData, form: FormInstance<any>}> = ({activity, form}) => {
     const [bncc, setBncc] = useState<BNCC[]>([]);
     const [selectedValues, setSelectedValues] = useState<number[]>(activity.Activities_BNCC.map(bncc => bncc.BNCC_id));
     

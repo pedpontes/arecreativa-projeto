@@ -16,6 +16,7 @@ route.get("/",async (req: Request, res: Response) => {
         const activities = await listActivitiesController(req);
         res.status(200).json(activities);
     } catch (error) {
+        console.error(error);
         res.status(500).send("Internal server error");     
     }
 });
@@ -25,9 +26,9 @@ route.get("/",async (req: Request, res: Response) => {
 route.post("/",async (req: Request, res: Response) => {
         try {
             const newActivity = await createActivitiesController(req);
-            
             res.status(201).json(newActivity);
         } catch (error: any) {
+            console.error(error);
             res.status(error.status ?? 500).send(error.message);
         }    
     });
@@ -39,6 +40,7 @@ route.put("/:id",async (req: Request, res: Response) => {
             const newActivity = await editActivitiesController(req);
             res.status(200).json(newActivity);
         } catch (error: any) {
+            console.error(error);
             res.status(error.status ?? 500).send(error.message);
         }
     });
@@ -50,6 +52,7 @@ route.delete("/:id",async (req: Request, res: Response) => {
         await deleteActivitiesController(req);
         res.status(204).send();
     } catch (error: any) {
+        console.error(error);
         res.status(error.status ?? 500).send(error.message);
     }
     });
@@ -61,9 +64,12 @@ route.patch("/:id/changestatus",async (req: Request, res: Response) => {
             await changeStatusActivitiesController(req);
             res.status(204).send();
         } catch (error: any) {
+            console.error(error);
             res.status(error.status ?? 500).send(error.message);
         }
     });
+
+//get activity by id
 
 route.get("/:id",async (req: Request, res: Response) => {
     try {
@@ -71,9 +77,12 @@ route.get("/:id",async (req: Request, res: Response) => {
         res.status(200).json(activity);
     }
     catch (error: any){
+        console.error(error);
         res.status(error.status ?? 500).send(error.message);
     }
     });
+
+//download pdf
 
 route.get("/pdf/:id",async (req: Request, res: Response) => {
     try {
@@ -81,6 +90,7 @@ route.get("/pdf/:id",async (req: Request, res: Response) => {
         res.status(200).download(`./pdfs/activity-${req.params.id}/activity.pdf`);
     }
     catch (error: any){
+        console.error(error);
         res.status(error.status ?? 500).send(error.message);
     }
 });

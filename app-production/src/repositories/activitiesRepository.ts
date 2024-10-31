@@ -13,7 +13,6 @@ export async function getActivitiesRepository(): Promise<Activities[]> {
 };
 
 export async function createActivitiesRepository(data: IActivitiesData): Promise<Activities> {
-    console.log(data);  // Debug: verificar os dados recebidos
     try {
         const newActivity = await prisma.activities.create({
             data: {
@@ -36,7 +35,6 @@ export async function createActivitiesRepository(data: IActivitiesData): Promise
         });
         return newActivity;
     } catch (error: any) {
-        console.error("Erro ao criar atividade:", error);
         throw { status: 500, message: error };
     }
 };
@@ -100,7 +98,7 @@ export async function changeStatusActivitiesRepository(activity: Activities): Pr
 
 export async function editActivitiesRepository(id: number, data: IActivitiesData): Promise<void> {
     try {
-        const newActivity = await prisma.activities.update({
+        await prisma.activities.update({
             where: {
                 id
             },
