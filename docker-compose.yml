@@ -19,7 +19,7 @@ services:
     image: node:latest
     container_name: node_container
     working_dir: /usr/src/app
-    command: sh -c "npm install && npm start"
+    command: sh -c "npm install && npm run build && npm run generate && npm run migrate && npm run seed && npm run start"
     volumes:
       - ./app-production:/usr/src/app
     ports:
