@@ -1,6 +1,6 @@
 "use client"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = "http://localhost:3000";
 import { BNCC, IActivityBNCCData } from "@/app/lib/IActivities";
 import { Checkbox, FormInstance } from "antd";
 import { useState, useEffect } from "react";

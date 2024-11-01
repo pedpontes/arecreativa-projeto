@@ -1,4 +1,4 @@
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 import { BNCC } from "@/app/lib/IActivities";
 import { Checkbox } from "antd";
 import { useState, useEffect } from "react";
@@ -7,7 +7,7 @@ const CheckboxBNCCComponent: React.FC<{value?: string[], onChange?: (value: stri
     const [bncc, setBncc] = useState<BNCC[]>([]);
     useEffect(() => {
         async function fetchBNCC() {
-            const response = await fetch(`${baseUrl}/api/options/bncc`);
+            const response = await fetch(`http://localhost:3000/api/options/bncc`);
             const data = await response.json();
             setBncc(data);
 

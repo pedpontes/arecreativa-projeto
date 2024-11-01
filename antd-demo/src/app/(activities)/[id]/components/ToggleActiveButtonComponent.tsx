@@ -1,6 +1,6 @@
 "use client"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = "http://localhost:3000";
 import { Button } from "antd";
 import { useContext } from "react";
 import {ActivityContext} from "./ActivityContext";

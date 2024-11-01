@@ -1,6 +1,5 @@
 "use client"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 import { useState, useEffect } from "react";
 import { IActivitiesData } from "../lib/IActivities";
 import CreateActivityModalComponent from "./components/ModalCreateActivityComponent";

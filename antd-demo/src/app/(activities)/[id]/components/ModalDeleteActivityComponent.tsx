@@ -1,6 +1,6 @@
 "use client"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = "http://localhost:3000";
 import React from 'react';
 import { Modal, Button } from 'antd';
 import { useRouter } from 'next/navigation';
