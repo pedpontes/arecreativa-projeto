@@ -1,4 +1,4 @@
-#Teste técnico A Recreaviva
+# Teste técnico A Recreaviva
 
 ### Comandos:
 
@@ -29,7 +29,7 @@ Entre na raiz do projeto "cd .." (caso ainda esteja dentro do antd-demo) ( mesmo
 
   ```npm install && npm run build && npm run generate && npx prisma migrate dev --name deploy && npm run migrate && npm run seed && npm run start```
 
-##Melhorias
+## Melhorias
 
 - Autenticação JWT
 - Melhorar o desacoplamento das funcionalidades com inversão de dependencia.
