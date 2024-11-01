@@ -56,7 +56,6 @@ async function main() {
             }
         }
     });
-    }
     await prisma.activities.create({
         data: {
             title: "Atividade 3",
@@ -116,6 +115,7 @@ async function main() {
             }
         }
     });
+    }
 
 main()
     .catch((e) => {
