@@ -16,7 +16,7 @@ export default function Page() {
     
     useEffect(() => {
         async function fetchActivities () {
-            const response = await fetch(`${baseUrl}/api/activities`,{
+            const response = await fetch(`http://localhost:3000/api/activities`,{
                 cache: 'no-store',
             });
             const activitiesData = await response.json();
