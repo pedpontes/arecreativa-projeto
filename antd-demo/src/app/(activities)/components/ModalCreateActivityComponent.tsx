@@ -1,4 +1,4 @@
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = "http://localhost:3000";
 import React from 'react';
 import { Modal, Button, Input, Tag } from 'antd';
 import { Form } from 'antd';
