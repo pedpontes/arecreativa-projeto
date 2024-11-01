@@ -1,6 +1,8 @@
+#Teste técnico A Recreaviva
+
 ### Comandos:
 
-##### Primeirament clone o projeto do git
+##### Primeiramente clone o projeto do git
 
 Na raiz do projeto abra o terminal e inicie o container docker, para isso precisa ter instalado o docker com docker-compose na maquina.
 - ```docker-compose up -d```
@@ -26,3 +28,10 @@ Entre na raiz do projeto "cd .." (caso ainda esteja dentro do antd-demo) ( mesmo
   Caso seu OS for linux, o start.bat nao vai funcionar, portanto execute esse comando dentro do diretório app-production/
 
   ```npm install && npm run build && npm run generate && npx prisma migrate dev --name deploy && npm run migrate && npm run seed && npm run start```
+
+##Melhorias
+
+- Autenticação JWT
+- Melhorar o desacoplamento das funcionalidades com inversão de dependencia.
+- Testes unitários ou Mock
+- Melhorar as reutilizações dos componentes.
