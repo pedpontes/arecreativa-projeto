@@ -1,5 +1,7 @@
 ### Comandos:
 
+##### Primeirament clone o projeto do git
+
 Na raiz do projeto abra o terminal e inicie o container docker, para isso precisa ter instalado o docker com docker-compose na maquina.
 - ```docker-compose up -d```
 
