@@ -1,4 +1,3 @@
-import { BaseNextRequest } from "next/dist/server/base-http";
 
 export interface IActivitiesData {
     title: string;

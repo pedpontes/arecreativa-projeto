@@ -3,7 +3,7 @@ import fs from 'fs';
 import { Request } from 'express';
 import BASE_URL from "../config"
 
-export const getPdfController = async (req: Request) => {
+const getPdfController = async (req: Request) => {
   
   const dir = `./pdfs/activity-${req.params.id}`;
   if (!fs.existsSync(dir)){
@@ -26,3 +26,5 @@ export const getPdfController = async (req: Request) => {
   await browser.close();
   return;
 };
+
+export default getPdfController;

@@ -6,11 +6,11 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "scripts": {
-    "deploy":"npm install && npm run build && npm run generate && npx prisma migrate dev --name deploy && npm run migrate && npm run seed && npm run start",
+    "deploy": "npm install && npm run build && npm run generate && npx prisma migrate dev --name deploy && npm run migrate && npm run seed && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
     "start": "npx tsc && cross-env NODE_ENV=production node dist/index.js",
-    "dev": "npx tsc && cross-env NODE_ENV=development node dist/index.js",
+    "dev": "npx tsc && cross-env NODE_ENV=development nodemon dist/index.js",
     "seed": "npx prisma db seed",
     "generate": "npx prisma generate",
     "migrate": "npx prisma migrate deploy"
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.8.1",
+    "nodemon": "^3.1.7",
     "ts-node": "^10.9.2"
   }
 }

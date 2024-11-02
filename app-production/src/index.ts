@@ -2,11 +2,9 @@ import express from 'express';
 import cors from 'cors';
 const app = express();
 const PORT = 3000;
-import routes from './middlewares/routes';
+import routes from './routes/routes';
 import next from "next"
 import path from 'path';
-
-//FIXME: Erro ao encontrar o arquivo build .next, verifique o caminho correto: 
 
 const server = next({dev: false, conf: {distDir: path.join(__dirname, '../.next')}});
 const handle = server.getRequestHandler();

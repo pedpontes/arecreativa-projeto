@@ -1,9 +1,7 @@
-import { Request } from 'express';
-import { deleteActivitiesRepository } from '../repositories/activitiesRepository';
+import { deleteActivitiesRepository } from '../repositories/activitiesRepository/deleteActivitiesRepository';
 
-export const deleteActivitiesController = async (req: Request) => {
-    const { id } = req.params;
-
-    await deleteActivitiesRepository(parseInt(id));
-    return;
+const deleteActivitiesController = async (id: number) => {
+    await deleteActivitiesRepository(id);
 };
+
+export default deleteActivitiesController;

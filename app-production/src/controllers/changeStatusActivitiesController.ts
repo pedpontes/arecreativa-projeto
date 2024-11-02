@@ -1,14 +1,14 @@
-import { Request, Response } from "express";
-import { getActivitiesByIdRepository } from "../repositories/activitiesRepository";
-import { changeStatusActivitiesRepository } from "../repositories/activitiesRepository";
+import { getActivitiesByIdRepository } from "../repositories/activitiesRepository/getActivitiesByIdRepository";
+import { changeStatusActivitiesRepository } from "../repositories/activitiesRepository/changeStatusActivitiesRepository";
 
 
-export const changeStatusActivitiesController = async (req: Request) => {
-    const { id } = req.params;
-
-    const activity = await getActivitiesByIdRepository(Number(id));
+const changeStatusActivitiesController = async (id: number) => {
+    
+    const activity = await getActivitiesByIdRepository(id);
     if(!activity){
         throw {status: 404, message: "Activity not found"};
     }
     await changeStatusActivitiesRepository(activity);
 };
+
+export default changeStatusActivitiesController;
