@@ -4,8 +4,8 @@ const baseUrl = "http://localhost:3000";
 import React from 'react';
 import { Modal, Button } from 'antd';
 import { useRouter } from 'next/navigation';
-import { ActivityContext } from '../components/ActivityContext';
-import { useModalAction } from "@/app/components/ModalActionComponent";
+import { ActivityContext } from '../contexts/ActivityContext';
+import { useModalAction } from "@/app/contexts/ModalActionContext";
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);

@@ -4,8 +4,9 @@ import { Modal, Button, Input, Tag } from 'antd';
 import { Form } from 'antd';
 import { IActivitiesFormSubmit } from '@/app/lib/IActivities';
 import CheckboxBNCCComponent from './CheckboxBNCCComponent';
-import { useModalAction } from "@/app/components/ModalActionComponent"
+import { useModalAction } from "@/app/contexts/ModalActionContext"
 
+//TODO: implement fetch in services
 
 export const customizeRequiredMark = (label: React.ReactNode, { required }: { required: boolean }) => (
     <>

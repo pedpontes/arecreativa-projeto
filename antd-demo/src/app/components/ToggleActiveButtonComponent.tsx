@@ -3,9 +3,9 @@
 const baseUrl = "http://localhost:3000";
 import { Button } from "antd";
 import { useContext } from "react";
-import {ActivityContext} from "./ActivityContext";
+import {ActivityContext} from "../contexts/ActivityContext";
 import {useRouter} from "next/navigation";
-import { useModalAction } from "@/app/components/ModalActionComponent";
+import { useModalAction } from "@/app/contexts/ModalActionContext";
 
 const ToggleActiveButtonComponent: React.FC = () => {
     const activity = useContext(ActivityContext);

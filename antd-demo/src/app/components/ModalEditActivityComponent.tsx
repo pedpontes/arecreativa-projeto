@@ -6,11 +6,11 @@ import { Checkbox, FormInstance } from "antd";
 import { useState, useEffect } from "react";
 import { useContext } from 'react';
 import { Modal, Button, Form, Input } from 'antd';
-import { ActivityContext } from '../components/ActivityContext';
-import { customizeRequiredMark } from '../../components/ModalCreateActivityComponent';
+import { ActivityContext } from '../contexts/ActivityContext';
+import { customizeRequiredMark } from './ModalCreateActivityComponent';
 import { IActivitiesFormSubmit } from '@/app/lib/IActivities';
 import { useRouter } from "next/navigation";
-import { useModalAction } from "@/app/components/ModalActionComponent";
+import { useModalAction } from "@/app/contexts/ModalActionContext";
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);

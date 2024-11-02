@@ -2,7 +2,7 @@
 
 import React, { useContext } from 'react';
 import { Descriptions } from 'antd';
-import { ActivityContext } from '../components/ActivityContext';
+import { ActivityContext } from '../contexts/ActivityContext';
 
 const ContentActivityComponent: React.FC = () => {
     const activity = useContext(ActivityContext);

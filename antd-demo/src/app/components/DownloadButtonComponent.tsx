@@ -1,10 +1,10 @@
 "use client"
 
-const baseUrl = "http://localhost:3000";
 import { Button } from "antd";
 import { useContext } from "react";
-import {ActivityContext} from "./ActivityContext";
-import { useModalAction } from "@/app/components/ModalActionComponent";
+import {ActivityContext} from "../contexts/ActivityContext";
+import { useModalAction } from "@/app/contexts/ModalActionContext";
+import getPdfActivity from "../services/getPdfActivity";
 
 const DownloadButtonComponent: React.FC = () => {
     const activity = useContext(ActivityContext);
@@ -12,14 +12,8 @@ const DownloadButtonComponent: React.FC = () => {
 
     const handleClickDownload = async () => {
         try {
-            const response = await fetch(`${baseUrl}/api/activities/pdf/${activity.id}`, {
-                method: "GET"
-            })
+            const blob = await getPdfActivity(activity.id);
 
-            if(!response.ok) {
-                throw new Error("Error to download pdf");
-            }
-            const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
             
             const link = document.createElement("a");
@@ -33,7 +27,6 @@ const DownloadButtonComponent: React.FC = () => {
             console.error(error);
         }
     }
-
 
     return (
         <Button onClick={handleClickDownload} type="primary" color="default">

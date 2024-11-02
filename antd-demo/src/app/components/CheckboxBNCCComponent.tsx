@@ -2,13 +2,14 @@
 import { BNCC } from "@/app/lib/IActivities";
 import { Checkbox } from "antd";
 import { useState, useEffect } from "react";
+import getAllBncc from "../services/getAllBncc";
 
 const CheckboxBNCCComponent: React.FC<{value?: string[], onChange?: (value: string[]) => void}> = ({value = [], onChange}) => {
     const [bncc, setBncc] = useState<BNCC[]>([]);
+    
     useEffect(() => {
         async function fetchBNCC() {
-            const response = await fetch(`http://localhost:3000/api/options/bncc`);
-            const data = await response.json();
+            const data = await getAllBncc();
             setBncc(data);
 
             return data;

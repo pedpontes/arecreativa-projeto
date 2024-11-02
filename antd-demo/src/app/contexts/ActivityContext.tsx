@@ -1,12 +1,10 @@
 "use client"
 
-const baseUrl = "http://localhost:3000";
 import { IActivityBNCCData } from "@/app/lib/IActivities";
 import { createContext, useEffect, useState } from "react";
-
+import getActivityById from "../services/getActivityById";
 
 export const ActivityContext = createContext<IActivityBNCCData>({} as IActivityBNCCData);
-
 
 const ActivityContextProvider: React.FC<{ children: React.ReactNode, params: { id: number } }> = ({ children, params }) => {
     const [activity, setActivity] = useState<IActivityBNCCData>({} as IActivityBNCCData);
@@ -14,10 +12,7 @@ const ActivityContextProvider: React.FC<{ children: React.ReactNode, params: { i
 
     useEffect(() => {
         async function fetchActivity() {
-            const response = await fetch(`${baseUrl}/api/activities/${params.id}`, {
-                cache: 'no-store',
-            });
-            const activityData = await response.json();
+            const activityData = await getActivityById(params.id);
             
             setActivity(activityData);
         }
