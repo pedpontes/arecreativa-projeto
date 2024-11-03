@@ -1,8 +1,9 @@
 mysql_data/
-app-production/.next/
-app-production/node_modules/
-app-production/dist/
-antd-demo/node_modules/
-antd-demo/.next/
-app-production/prisma/migrations/
+server-app/.next/
+server-app/node_modules/
+server-app/dist/
+ativities-app/node_modules/
+ativities-app/.next/
+server-app/prisma/migrations/
 
+.env.local
