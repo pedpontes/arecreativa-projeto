@@ -2,9 +2,9 @@
 
 import { Checkbox, Form, Input, Modal, Tag } from "antd";
 import { useEffect, useState } from "react";
-import { BNCC, IActivitiesFormSubmit, IActivityBNCCData } from "../lib/IActivities";
+import { BNCC, IActivitiesFormSubmit, IActivityBNCCData } from "../services/IActivities";
 import { useModalAction } from "../contexts/ActionModalContext";
-import getAllBncc from "../services/getAllBncc";
+import apiConsumer from "@/app/config/ApiInjector";
 
 export const customizeRequiredMark = (label: React.ReactNode, { required }: { required: boolean }) => (
     <>
@@ -80,7 +80,7 @@ const CheckboxBNCCEditComponent: React.FC<{ activity?: IActivityBNCCData, form: 
     useEffect(() => {
         async function fetchBNCC() {
             try{
-                const data = await getAllBncc();
+                const data = await apiConsumer.getAllBnccOptions();
                 setBncc(data);
                 
                 return data;

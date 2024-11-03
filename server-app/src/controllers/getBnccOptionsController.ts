@@ -1,4 +1,4 @@
-import { BNCC } from "../lib/IActivitiesData";
+import { BNCC } from "../lib/IActivities";
 import { getBNCCOptionsRepository } from "../repositories/activitiesRepository/getAllBnccOptionsRepository";
 
 

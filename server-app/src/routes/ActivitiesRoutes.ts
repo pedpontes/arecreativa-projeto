@@ -1,12 +1,12 @@
 import {Router, Request, Response} from "express";
-import {IActivitiesData} from "../lib/IActivitiesData";
+import {IActivitiesData} from "../lib/IActivities";
 import validationData from "../middlewares/validationActivity";
 import verifyExistActivity from "../middlewares/verifyExistActivity";
 import getAllActivitiesController from "../controllers/getAllActivitiesController";
 import createActivitiesController from "../controllers/createActivitiesController";
 import deleteActivitiesController from "../controllers/deleteActivitiesController";
 import changeStatusActivitiesController from "../controllers/changeStatusActivitiesController";
-import editActivitiesController from "../controllers/editActivitiesController";
+import editActivitiesController from "../controllers/updateActivitiesController";
 import getActivityByIdController from "../controllers/getActivityByIdController";
 import getPdfController from "../controllers/getPdfController";
 const activityRoute = Router();

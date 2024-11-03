@@ -2,10 +2,10 @@
 import React from 'react';
 import { Button } from 'antd';
 import { Form } from 'antd';
-import { IActivitiesFormSubmit } from '@/app/lib/IActivities';
+import { IActivitiesFormSubmit } from '@/app/services/IActivities';
 import { useModalAction } from "@/app/contexts/ActionModalContext"
-import createActivity from '../services/createActivity';
 import FormsModal from './FormsModal';
+import apiConsumer from '@/app/config/ApiInjector';
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -22,7 +22,7 @@ const ActivityModal: React.FC = () => {
             time_total: Number(valuesForm.time_total),
         }
         try{
-            await createActivity(valuesForm);
+            await apiConsumer.createActivity(valuesForm);
             
             form.resetFields();
             setIsModalOpen(false);

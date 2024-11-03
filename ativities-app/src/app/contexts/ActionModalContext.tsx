@@ -34,6 +34,7 @@ const ModalActionProvider: React.FC<ModalActionProviderProps> = ({ children }) =
                 title={"Aviso"}
                 onOk={() => setModalAction((prev) => ({ ...prev, isopen: false }))}
                 open={modalAction.isopen}
+                cancelButtonProps={{ style: { display: "none" } }}
             >
                 {modalAction.success 
                     ? <p><CheckSquareOutlined /> {modalAction.message}</p> 

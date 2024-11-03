@@ -1,5 +1,5 @@
-import { editActivitiesRepository } from '../repositories/activitiesRepository/editActivitiesRepository';
-import { IActivitiesData } from '../lib/IActivitiesData';
+import { editActivitiesRepository } from '../repositories/activitiesRepository/updateActivitiesRepository';
+import { IActivitiesData } from '../lib/IActivities';
 
 const editActivitiesController = async (id: number, activity: IActivitiesData) => {
 

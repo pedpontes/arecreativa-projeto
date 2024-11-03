@@ -1,4 +1,4 @@
-import { IActivitiesData } from "../../lib/IActivitiesData";
+import { IActivitiesData } from "../../lib/IActivities";
 import { prisma } from "../../services/prismaDBProvider";
 
 export async function editActivitiesRepository(id: number, data: IActivitiesData): Promise<void> {

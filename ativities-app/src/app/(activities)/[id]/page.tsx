@@ -1,7 +1,7 @@
 "use server"
 
 import ContentActivityById from "@/app/components/ContentActivityById";
-import EditButtonModal from "@/app/components/EditButtonModal";
+import UpdateButtonModal from "@/app/components/UpdateButtonModal";
 import DeleteButtonModal from "@/app/components/DeleteButtonModal";
 import ActivityContextProvider from "@/app/contexts/ActivityContext";
 import ToggleStatusButton from "@/app/components/ToggleStatusButton";
@@ -27,7 +27,7 @@ export default async function Page({ params }: { params : Promise<{ id: number }
                     justify="flex-end"
                     wrap={true}
                     >
-                        <EditButtonModal/>
+                        <UpdateButtonModal/>
                         <DownloadButton/>
                         <ToggleStatusButton/>
                         <DeleteButtonModal/>
