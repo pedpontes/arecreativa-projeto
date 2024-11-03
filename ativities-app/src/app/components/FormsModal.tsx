@@ -4,7 +4,7 @@ import { Checkbox, Form, Input, Modal, Tag } from "antd";
 import { useEffect, useState } from "react";
 import { BNCC, IActivitiesFormSubmit, IActivityBNCCData } from "../services/IActivities";
 import { useModalAction } from "../contexts/ActionModalContext";
-import apiConsumer from "@/app/config/ApiInjector";
+import apiConsumer from "@/app/config/ApiModule";
 
 export const customizeRequiredMark = (label: React.ReactNode, { required }: { required: boolean }) => (
     <>

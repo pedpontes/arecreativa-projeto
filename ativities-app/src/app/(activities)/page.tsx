@@ -8,7 +8,7 @@ import { Header } from "antd/es/layout/layout";
 import { Flex, Switch } from "antd";
 import { Input } from "antd";
 import { useModalAction } from "@/app/contexts/ActionModalContext";
-import apiConsumer from "@/app/config/ApiInjector";
+import apiConsumer from "@/app/config/ApiModule";
 
 export default function Page() {
     const [activities, setActivities] = useState<IActivitiesData[]>([]);

@@ -5,7 +5,7 @@ import { useContext } from "react";
 import {ActivityContext} from "../contexts/ActivityContext";
 import {useRouter} from "next/navigation";
 import { useModalAction } from "@/app/contexts/ActionModalContext";
-import apiConsumer from "@/app/config/ApiInjector";
+import apiConsumer from "@/app/config/ApiModule";
 
 const ToggleActiveButtonComponent: React.FC = () => {
     const activity = useContext(ActivityContext);

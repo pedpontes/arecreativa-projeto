@@ -9,68 +9,34 @@ export class ApiConsumer implements IApiService{
     };
 
     async createActivity(valuesForm: IActivitiesFormSubmit): Promise<void> {
-        try {
-            await this.ApiService.createActivity(valuesForm);
-        } catch (error:any) {
-            throw new Error(error);
-        }
+        await this.ApiService.createActivity(valuesForm);
     }
 
     async deleteActivity(id: number): Promise<void> {
-        try {
-            await this.ApiService.deleteActivity(id);
-        } catch (error: any) {
-            throw new Error(error);
-        }
+        await this.ApiService.deleteActivity(id);
     }
 
     async getAllActivities(): Promise<IActivitiesData[]> {
-        try{
-            return await this.ApiService.getAllActivities();
-        }
-        catch(error: any){
-            throw new Error(error);
-        };
+        return await this.ApiService.getAllActivities();
     }
 
     async getActivityById(id: number): Promise<IActivityBNCCData> {
-        try{
-            return await this.ApiService.getActivityById(id);
-        }
-        catch(error: any){
-            throw new Error(error);
-        };
+        return await this.ApiService.getActivityById(id);
     }
 
     async updateActivity(id: number, data: IActivitiesFormSubmit): Promise<void> {
-        try {
-            await this.ApiService.updateActivity(id, data);
-        } catch (error: any) {
-            throw new Error(error);
-        }
+        await this.ApiService.updateActivity(id, data);
     }
 
     async getAllBnccOptions(): Promise<BNCC[]> {
-        try {
-            return await this.ApiService.getAllBnccOptions();
-        } catch (error: any) {
-            throw new Error(error);
-        }
+        return await this.ApiService.getAllBnccOptions();
     }
 
     async getPdfActivityById(id: number): Promise<Blob> {
-        try {
-            return await this.ApiService.getPdfActivityById(id);
-        } catch (error: any) {
-            throw new Error(error);
-        }
+        return await this.ApiService.getPdfActivityById(id);
     }
 
     async toggleActivityStatus(id: number): Promise<void> {
-        try {
-            await this.ApiService.toggleActivityStatus(id);
-        } catch (error: any) {
-            throw new Error(error);
-        }
+        await this.ApiService.toggleActivityStatus(id);
     }
 }

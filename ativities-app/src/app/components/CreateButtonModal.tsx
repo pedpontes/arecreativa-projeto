@@ -5,7 +5,7 @@ import { Form } from 'antd';
 import { IActivitiesFormSubmit } from '@/app/services/IActivities';
 import { useModalAction } from "@/app/contexts/ActionModalContext"
 import FormsModal from './FormsModal';
-import apiConsumer from '@/app/config/ApiInjector';
+import apiConsumer from '@/app/config/ApiModule';
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);

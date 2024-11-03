@@ -5,7 +5,7 @@ import { Modal, Button } from 'antd';
 import { useRouter } from 'next/navigation';
 import { ActivityContext } from '../contexts/ActivityContext';
 import { useModalAction } from "@/app/contexts/ActionModalContext";
-import apiConsumer from "@/app/config/ApiInjector";
+import apiConsumer from "@/app/config/ApiModule";
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);

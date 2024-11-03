@@ -8,7 +8,7 @@ import { IActivitiesFormSubmit } from '@/app/services/IActivities';
 import { useRouter } from "next/navigation";
 import { useModalAction } from "@/app/contexts/ActionModalContext";
 import FormsModal from "./FormsModal";
-import apiConsumer from "@/app/config/ApiInjector";
+import apiConsumer from "@/app/config/ApiModule";
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);

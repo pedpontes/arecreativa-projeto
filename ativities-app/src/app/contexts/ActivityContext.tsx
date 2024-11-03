@@ -4,7 +4,7 @@ import { IActivityBNCCData } from "@/app/services/IActivities";
 import { createContext, useEffect, useState } from "react";
 import { useModalAction } from "./ActionModalContext";
 import { useRouter } from "next/navigation";
-import apiConsumer from "../config/ApiInjector";
+import apiConsumer from "../config/ApiModule";
 
 export const ActivityContext = createContext<IActivityBNCCData>({} as IActivityBNCCData);
 
