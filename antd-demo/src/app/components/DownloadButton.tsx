@@ -1,9 +1,9 @@
 "use client"
 
-import { Button } from "antd";
-import { useContext } from "react";
+import {Button} from "antd";
+import {useContext} from "react";
 import {ActivityContext} from "../contexts/ActivityContext";
-import { useModalAction } from "@/app/contexts/ModalActionContext";
+import {useModalAction} from "@/app/contexts/ActionModalContext";
 import getPdfActivity from "../services/getPdfActivity";
 
 const DownloadButtonComponent: React.FC = () => {

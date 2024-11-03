@@ -9,11 +9,14 @@ const getAllActivities = async (): Promise<IActivitiesData[]> => {
         });
         const activitiesData = await response.json();
         
+        if(!response.ok){
+            throw new Error("Failed to fetch data");
+        }
+        
         return activitiesData;
     }
-    catch(e){
-        console.error(e);
-        return [];
+    catch(error: any){
+        throw new Error(error);
     };
 };
 

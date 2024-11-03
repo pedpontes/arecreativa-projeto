@@ -4,7 +4,7 @@ import "./global.css";
 import React from 'react';
 import { Layout, Menu, theme } from 'antd';
 import Link from 'next/link';
-import ModalActionProvider from "./contexts/ModalActionContext";
+import ModalActionProvider from "./contexts/ActionModalContext";
 
 const { Header, Content } = Layout;
 

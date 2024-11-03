@@ -1,11 +1,11 @@
 "use client"
 
-const baseUrl = "http://localhost:3000";
 import { Button } from "antd";
 import { useContext } from "react";
 import {ActivityContext} from "../contexts/ActivityContext";
 import {useRouter} from "next/navigation";
-import { useModalAction } from "@/app/contexts/ModalActionContext";
+import { useModalAction } from "@/app/contexts/ActionModalContext";
+import toggleStatusActivity from "../services/toggleStatusActivity";
 
 const ToggleActiveButtonComponent: React.FC = () => {
     const activity = useContext(ActivityContext);
@@ -14,20 +14,13 @@ const ToggleActiveButtonComponent: React.FC = () => {
 
     const handleToggleActive = async () => {
         try {
-            const response = await fetch(`${baseUrl}/api/activities/${activity.id}/changestatus`, {
-                method: "PATCH"
-            })
+            await toggleStatusActivity(activity.id);
             
-            setModalAction(response.ok 
-                ? {isopen: true, message: "Status da atividade alterada com sucesso!", success: true}
-                : {isopen: true, message: "Erro ao alterar status da atividade!", success: false}
-            );
-            
-            router.push("/");
-            
+            setModalAction({isopen: true, message: "Status da atividade alterada com sucesso!", success: true});
+            return router.push("/");
         }catch (error) {
-            setModalAction({isopen: true, message: "Erro ao alterar status da atividade!", success: false});
             console.log(error);
+            setModalAction({isopen: true, message: "Erro ao alterar status da atividade!", success: false});
         }
     };
 

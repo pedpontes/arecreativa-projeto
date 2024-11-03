@@ -1,11 +1,11 @@
 "use client"
 
-const baseUrl = "http://localhost:3000";
 import React from 'react';
 import { Modal, Button } from 'antd';
 import { useRouter } from 'next/navigation';
 import { ActivityContext } from '../contexts/ActivityContext';
-import { useModalAction } from "@/app/contexts/ModalActionContext";
+import { useModalAction } from "@/app/contexts/ActionModalContext";
+import deleteActivity from "@/app/services/deleteActivity";
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -15,19 +15,15 @@ const ActivityModal: React.FC = () => {
 
     const handleOk = async () => {
         try {
-            const response = await fetch(`${baseUrl}/api/activities/${activity.id}`, {
-                method: 'DELETE',
-            });
+            await deleteActivity(activity.id);
 
-            if(response.ok) {
-                setIsModalOpen(false);
-                setModalAction({isopen: true, message: "Atividade exluida com sucesso!", success: true});
-                return router.push('/');
-            }
-            return setModalAction({isopen: true, message: "Erro ao exluir atividade!", success: false});
+            setIsModalOpen(false);
+            setModalAction({isopen: true, message: "Atividade exluida com sucesso!", success: true});
+            return router.push('/');            
         } catch (error) {
-            setModalAction({isopen: true, message: "Erro ao exluir atividade!", success: false});
             console.error(error);  
+            setIsModalOpen(false);
+            setModalAction({isopen: true, message: "Erro ao exluir atividade!", success: false});
         }
     };
 

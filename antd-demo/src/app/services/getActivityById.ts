@@ -8,12 +8,15 @@ const getActivityById = async (id: number) => {
             cache: 'no-store',
         });
         const activityData = await response.json();
-        
+
+        if(!response.ok){
+            throw new Error("Failed to fetch data");
+        }
+
         return activityData;
     }
-    catch(e){
-        console.error(e);
-        return {};
+    catch(error: any){
+        throw new Error(error);
     };
 };
 

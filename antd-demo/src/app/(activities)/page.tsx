@@ -1,24 +1,33 @@
 "use client"
 
 import getAllActivities from "../services/getAllAtivities";
-import CreateActivityModalComponent from "@/app/components/ModalCreateActivityComponent";
-import CardActivityComponent from "@/app/components/CardActivityComponent";
-import { useState, use, useEffect } from "react";
+import CreateButtonModal from "@/app/components/CreateButtonModal";
+import CardActivity from "@/app/components/CardActivity";
+import { useState, useEffect } from "react";
 import { IActivitiesData } from "../lib/IActivities";
 import { Header } from "antd/es/layout/layout";
 import { Flex, Switch } from "antd";
 import { Input } from "antd";
-
+import { useModalAction } from "@/app/contexts/ActionModalContext";
 
 export default function Page() {
     const [activities, setActivities] = useState<IActivitiesData[]>([]);
     const [searchInput, setSearchInput] = useState<string>("");
     const [toggleVisibility, setToggleVisibility] = useState<boolean>(true);
+    const { setModalAction } = useModalAction();
 
     useEffect(() => {
         async function fetchActivities() {
-            const activitiesData = await getAllActivities();
-            setActivities(activitiesData);
+            try{
+                const activitiesData = await getAllActivities();
+
+                setActivities(activitiesData);
+            }
+            catch(error: any){
+                console.error(error);
+                setModalAction({isopen: true, message: "Erro ao buscar atividades!", success: false});
+                setActivities([]);
+            };
         }
         fetchActivities();
     }, []);
@@ -60,10 +69,10 @@ export default function Page() {
                         Exibir ocultos?
                         <Switch title={"Exibir desabilitados"} defaultChecked={false} onChange={(checked) => setToggleVisibility(checked ? false : true)} />
                     </Flex>
-                    <CreateActivityModalComponent/>
+                    <CreateButtonModal/>
                 </Flex>
             </Header>
-            <CardActivityComponent Activities={filteredActivities}/>                    
+            <CardActivity Activities={filteredActivities}/>                    
         </>
     );
 }

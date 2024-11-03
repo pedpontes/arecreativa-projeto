@@ -1,11 +1,11 @@
 "use server"
 
-import ContentActivityComponent from "@/app/components/ContentActivityComponent";
-import ModalEditActivityComponent from "@/app/components/ModalEditActivityComponent";
-import ModalDeleteActivityComponent from "@/app/components/ModalDeleteActivityComponent";
+import ContentActivityById from "@/app/components/ContentActivityById";
+import EditButtonModal from "@/app/components/EditButtonModal";
+import DeleteButtonModal from "@/app/components/DeleteButtonModal";
 import ActivityContextProvider from "@/app/contexts/ActivityContext";
-import ToggleActiveButtonComponent from "@/app/components/ToggleActiveButtonComponent";
-import DownloadButtonComponent from "@/app/components/DownloadButtonComponent";
+import ToggleStatusButton from "@/app/components/ToggleStatusButton";
+import DownloadButton from "@/app/components/DownloadButton";
 import { Header } from "antd/es/layout/layout";
 import { Flex } from "antd";
 
@@ -27,13 +27,13 @@ export default async function Page({ params }: { params : Promise<{ id: number }
                     justify="flex-end"
                     wrap={true}
                     >
-                        <ModalEditActivityComponent/>
-                        <DownloadButtonComponent/>
-                        <ToggleActiveButtonComponent/>
-                        <ModalDeleteActivityComponent/>
+                        <EditButtonModal/>
+                        <DownloadButton/>
+                        <ToggleStatusButton/>
+                        <DeleteButtonModal/>
                     </Flex>
                 </Header>
-                <ContentActivityComponent/>
+                <ContentActivityById/>
             </ActivityContextProvider>
         </>
     );
