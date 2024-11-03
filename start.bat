@@ -12,3 +12,4 @@ move .next ../server-app/
 cd ../server-app/
 
 call npm run deploy
+
