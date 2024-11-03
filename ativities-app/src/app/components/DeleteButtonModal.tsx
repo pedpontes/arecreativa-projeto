@@ -5,7 +5,7 @@ import { Modal, Button } from 'antd';
 import { useRouter } from 'next/navigation';
 import { ActivityContext } from '../contexts/ActivityContext';
 import { useModalAction } from "@/app/contexts/ActionModalContext";
-import deleteActivity from "@/app/services/deleteActivity";
+import apiConsumer from "@/app/config/ApiModule";
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -15,7 +15,7 @@ const ActivityModal: React.FC = () => {
 
     const handleOk = async () => {
         try {
-            await deleteActivity(activity.id);
+            await apiConsumer.deleteActivity(activity.id);
 
             setIsModalOpen(false);
             setModalAction({isopen: true, message: "Atividade exluida com sucesso!", success: true});

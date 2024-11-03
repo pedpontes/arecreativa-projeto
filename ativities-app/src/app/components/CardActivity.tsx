@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card } from 'antd';
-import { IActivitiesData } from '@/app/lib/IActivities';
+import { IActivitiesData } from '@/app/services/IActivities';
 import Link from 'next/link';
 
 const CardActivityComponent: React.FC<{ Activities: IActivitiesData[] }> = ({ Activities }) => {

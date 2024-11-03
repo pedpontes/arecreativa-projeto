@@ -1,5 +1,5 @@
 import { createActivitiesRepository } from "../repositories/activitiesRepository/createActivitiesRepository";
-import { IActivitiesData } from "../lib/IActivitiesData";
+import { IActivitiesData } from "../lib/IActivities";
 
 const createActivitiesController = async (activity: IActivitiesData) => {    
     const newActivity = await createActivitiesRepository(activity);

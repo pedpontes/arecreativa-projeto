@@ -1,5 +1,5 @@
 import { Activities } from "@prisma/client";
-import { IActivitiesData } from "../../lib/IActivitiesData";
+import { IActivitiesData } from "../../lib/IActivities";
 import { prisma } from "../../services/prismaDBProvider";
 
 export async function createActivitiesRepository(data: IActivitiesData): Promise<void> {

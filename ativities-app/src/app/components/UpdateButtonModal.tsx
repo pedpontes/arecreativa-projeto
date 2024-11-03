@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import { useContext } from 'react';
 import { Button, Form } from 'antd';
 import { ActivityContext } from '../contexts/ActivityContext';
-import { IActivitiesFormSubmit } from '@/app/lib/IActivities';
+import { IActivitiesFormSubmit } from '@/app/services/IActivities';
 import { useRouter } from "next/navigation";
 import { useModalAction } from "@/app/contexts/ActionModalContext";
-import editActivity from "../services/editActivity";
 import FormsModal from "./FormsModal";
+import apiConsumer from "@/app/config/ApiModule";
 
 const ActivityModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -38,7 +38,7 @@ const ActivityModal: React.FC = () => {
         }
 
         try{
-            await editActivity(valuesForm, activity.id);
+            await apiConsumer.updateActivity(activity.id, valuesForm);
 
             setIsModalOpen(false);
             form.resetFields();

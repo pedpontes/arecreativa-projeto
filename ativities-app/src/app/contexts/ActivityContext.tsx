@@ -1,10 +1,10 @@
 "use client"
 
-import { IActivityBNCCData } from "@/app/lib/IActivities";
+import { IActivityBNCCData } from "@/app/services/IActivities";
 import { createContext, useEffect, useState } from "react";
-import getActivityById from "../services/getActivityById";
 import { useModalAction } from "./ActionModalContext";
 import { useRouter } from "next/navigation";
+import apiConsumer from "../config/ApiModule";
 
 export const ActivityContext = createContext<IActivityBNCCData>({} as IActivityBNCCData);
 
@@ -17,7 +17,7 @@ const ActivityContextProvider: React.FC<{ children: React.ReactNode, params: { i
     useEffect(() => {
         async function fetchActivity() {
             try {
-                const activityData = await getActivityById(params.id);
+                const activityData = await apiConsumer.getActivityById(params.id);
                 
                 setActivity(activityData);
             } catch (error) {

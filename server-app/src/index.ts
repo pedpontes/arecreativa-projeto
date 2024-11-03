@@ -10,7 +10,9 @@ const server = next({dev: false, conf: {distDir: path.join(__dirname, '../.next'
 const handle = server.getRequestHandler();
 
 server.prepare().then(() => {
-    app.use("/api", cors(), express.json(), routes);
+    app.use("/api", cors({
+        origin: "http://localhost:3001"
+    }), express.json(), routes);
     
     app.all("*", (req, res) => {
         return handle(req, res);

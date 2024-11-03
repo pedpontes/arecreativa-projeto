@@ -1,14 +1,14 @@
 "use client"
 
-import getAllActivities from "../services/getAllAtivities";
 import CreateButtonModal from "@/app/components/CreateButtonModal";
 import CardActivity from "@/app/components/CardActivity";
 import { useState, useEffect } from "react";
-import { IActivitiesData } from "../lib/IActivities";
+import { IActivitiesData } from "../services/IActivities";
 import { Header } from "antd/es/layout/layout";
 import { Flex, Switch } from "antd";
 import { Input } from "antd";
 import { useModalAction } from "@/app/contexts/ActionModalContext";
+import apiConsumer from "@/app/config/ApiModule";
 
 export default function Page() {
     const [activities, setActivities] = useState<IActivitiesData[]>([]);
@@ -19,7 +19,7 @@ export default function Page() {
     useEffect(() => {
         async function fetchActivities() {
             try{
-                const activitiesData = await getAllActivities();
+                const activitiesData = await apiConsumer.getAllActivities();
 
                 setActivities(activitiesData);
             }

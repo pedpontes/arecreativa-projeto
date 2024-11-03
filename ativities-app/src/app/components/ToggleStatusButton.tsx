@@ -5,7 +5,7 @@ import { useContext } from "react";
 import {ActivityContext} from "../contexts/ActivityContext";
 import {useRouter} from "next/navigation";
 import { useModalAction } from "@/app/contexts/ActionModalContext";
-import toggleStatusActivity from "../services/toggleStatusActivity";
+import apiConsumer from "@/app/config/ApiModule";
 
 const ToggleActiveButtonComponent: React.FC = () => {
     const activity = useContext(ActivityContext);
@@ -14,7 +14,7 @@ const ToggleActiveButtonComponent: React.FC = () => {
 
     const handleToggleActive = async () => {
         try {
-            await toggleStatusActivity(activity.id);
+            await apiConsumer.toggleActivityStatus(activity.id);
             
             setModalAction({isopen: true, message: "Status da atividade alterada com sucesso!", success: true});
             return router.push("/");

@@ -1,5 +1,5 @@
 import { getActivitiesByIdRepository } from "../repositories/activitiesRepository/getActivitiesByIdRepository";
-import { changeStatusActivitiesRepository } from "../repositories/activitiesRepository/changeStatusActivitiesRepository";
+import { changeStatusActivitiesRepository } from "../repositories/activitiesRepository/changeStatusActivityRepository";
 
 
 const changeStatusActivitiesController = async (id: number) => {

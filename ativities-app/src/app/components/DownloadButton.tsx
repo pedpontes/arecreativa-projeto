@@ -4,7 +4,7 @@ import {Button} from "antd";
 import {useContext} from "react";
 import {ActivityContext} from "../contexts/ActivityContext";
 import {useModalAction} from "@/app/contexts/ActionModalContext";
-import getPdfActivity from "../services/getPdfActivity";
+import apiConsumer from "@/app/config/ApiModule";
 
 const DownloadButtonComponent: React.FC = () => {
     const activity = useContext(ActivityContext);
@@ -12,7 +12,7 @@ const DownloadButtonComponent: React.FC = () => {
 
     const handleClickDownload = async () => {
         try {
-            const blob = await getPdfActivity(activity.id);
+            const blob = await apiConsumer.getPdfActivityById(activity.id);
 
             const url = window.URL.createObjectURL(blob);
             
