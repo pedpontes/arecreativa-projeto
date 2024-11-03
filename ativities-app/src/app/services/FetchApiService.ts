@@ -80,7 +80,7 @@ export class FetchApiService implements IApiService{
                 body: JSON.stringify(data),
             });
             if(!response.ok){
-                throw new Error("Erro ao editar atividade!");
+                throw new Error("Error to update activity!");
             }
         }
         catch(error: any){
@@ -93,7 +93,7 @@ export class FetchApiService implements IApiService{
             const data = await response.json();
             
             if(!response.ok){
-                throw new Error("Erro ao buscar bnccs!");
+                throw new Error("Error to get bncc!");
             }
             return data;
         }
@@ -117,7 +117,7 @@ export class FetchApiService implements IApiService{
                 method: "PATCH"
             });
             if(!response.ok) {
-                throw new Error("Erro ao alterar status da atividade!");
+                throw new Error("Error change status activity!");
             }
         }catch(error: any) {
             throw new Error(error);
