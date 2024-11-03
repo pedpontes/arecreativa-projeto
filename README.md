@@ -1,7 +1,0 @@
-- cd ./antd-demo
-- npm install
-- npm run build
-- mv ./next ../app-production/
-- cd ..
-- docker-compose up -d
-- demora cerca de 8 minutos para subir, apos isso, aberto na localhost:3000
