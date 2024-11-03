@@ -1,6 +1,6 @@
 import { IActivitiesData } from "../lib/IActivities";
 
-const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 const getAllActivities = async (): Promise<IActivitiesData[]> => {
     try{

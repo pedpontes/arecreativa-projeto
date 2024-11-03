@@ -1,6 +1,6 @@
 import { IActivitiesFormSubmit } from "../lib/IActivities";
 
-const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 const editActivity = async (activity: IActivitiesFormSubmit, activityId: number) => {
 

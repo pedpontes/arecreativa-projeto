@@ -6,3 +6,4 @@ ativities-app/node_modules/
 ativities-app/.next/
 server-app/prisma/migrations/
 
+.env.local
