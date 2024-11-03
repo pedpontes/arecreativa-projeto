@@ -1,3 +1,4 @@
+
 # Teste Técnico A Recreativa
 
 ### Como executar a aplicação:
