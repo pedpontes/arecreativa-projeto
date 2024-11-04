@@ -1,7 +1,7 @@
-import { IActivitiesData } from "../../lib/IActivities";
+import { IActivitiesFormSubmit } from "../../lib/IActivities";
 import { prisma } from "../../services/prismaDBProvider";
 
-export async function editActivitiesRepository(id: number, data: IActivitiesData): Promise<void> {
+export async function editActivitiesRepository(id: number, data: IActivitiesFormSubmit): Promise<void> {
     try {
         await prisma.activities.update({
             where: {

@@ -1,8 +1,8 @@
+import { Activities } from "@prisma/client";
+import { IActivityBNCCData } from "../../lib/IActivities";
 import { prisma } from "../../services/prismaDBProvider";
 
-//FIXME: change return type any to Activities with Activities_BNCC
-
-export async function getActivitiesRepository(): Promise<any> {
+export async function getActivitiesRepository(): Promise<Activities[]> {
     try {
         const activities = await prisma.activities.findMany({
             include:{

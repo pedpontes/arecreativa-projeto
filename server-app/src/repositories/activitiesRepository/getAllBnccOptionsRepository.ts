@@ -1,6 +1,7 @@
+import { BNCC } from "../../lib/IActivities";
 import { prisma } from "../../services/prismaDBProvider";
 
-export async function getBNCCOptionsRepository(): Promise<any> {
+export async function getBNCCOptionsRepository(): Promise<BNCC[]> {
     try {
         const bNCCOptions = await prisma.bNCC_options.findMany({
             select: {

@@ -1,7 +1,7 @@
 import { createActivitiesRepository } from "../repositories/activitiesRepository/createActivitiesRepository";
-import { IActivitiesData } from "../lib/IActivities";
+import { IActivitiesFormSubmit } from "../lib/IActivities";
 
-const createActivitiesController = async (activity: IActivitiesData) => {    
+const createActivitiesController = async (activity: IActivitiesFormSubmit) => {    
     const newActivity = await createActivitiesRepository(activity);
 
     return newActivity;
