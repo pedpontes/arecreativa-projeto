@@ -36,7 +36,7 @@ export class FetchApiService implements IApiService{
             throw new Error(error);
         }
     }
-    async getAllActivities(): Promise<IActivitiesData[]> {
+    async getAllActivities(): Promise<IActivityBNCCData[]> {
         try{
             const response = await fetch(`${baseUrl}/api/activities`,{
                 cache: 'no-store',

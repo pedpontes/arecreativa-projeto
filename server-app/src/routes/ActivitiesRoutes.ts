@@ -1,5 +1,5 @@
 import {Router, Request, Response} from "express";
-import {IActivitiesData} from "../lib/IActivities";
+import {IActivitiesData, IActivitiesFormSubmit} from "../lib/IActivities";
 import validationData from "../middlewares/validationActivity";
 import verifyExistActivity from "../middlewares/verifyExistActivity";
 import getAllActivitiesController from "../controllers/getAllActivitiesController";
@@ -27,7 +27,7 @@ activityRoute.get("/",async (req: Request, res: Response) => {
 //create an activity
 
 activityRoute.post("/",validationData, async (req: Request, res: Response) => {
-        const activity: IActivitiesData = req.body;
+        const activity: IActivitiesFormSubmit = req.body;
         try {
             await createActivitiesController(activity);
             res.status(201).send();
@@ -41,7 +41,7 @@ activityRoute.post("/",validationData, async (req: Request, res: Response) => {
 
 activityRoute.put("/:id", validationData, verifyExistActivity,async (req: Request, res: Response) => {
     const { id } = req.params;
-    const activity: IActivitiesData = req.body;
+    const activity: IActivitiesFormSubmit = req.body;
         try {
             await editActivitiesController(parseInt(id), activity);
             res.status(200).send();

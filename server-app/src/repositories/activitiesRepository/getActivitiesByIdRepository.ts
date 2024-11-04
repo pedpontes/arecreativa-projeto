@@ -1,9 +1,7 @@
 import { Activities } from "@prisma/client";
 import { prisma } from "../../services/prismaDBProvider";
 
-//FIXME: change return type any to Activities with Activities_BNCC
-
-export async function getActivitiesByIdRepository(id: number): Promise<any> {
+export async function getActivitiesByIdRepository(id: number): Promise<Activities | null> {
     try {
         const activity = await prisma.activities.findUnique({
             where: {
